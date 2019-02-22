@@ -55,11 +55,11 @@ spec:
       labels:
         app: pod-rocketmq-broker-master-prod
     spec:
-      nodeSelector:
-        node-role.kubernetes.io/rocketmq: "true"
+#      nodeSelector:
+#        node-role.kubernetes.io/rocketmq: "true"
 
       containers:
-      - image: registry.cn-hangzhou.aliyuncs.com/szss/rocketmq-broker:v4.3.1
+      - image: arilot/rocketmq-broker:v4.3.1
         securityContext:
           privileged: true
         imagePullPolicy: Always
@@ -89,7 +89,7 @@ spec:
               fieldPath: metadata.name
 
         volumeMounts:
-        - name: host-volume-rocketmq-broker-master-prod
+        - name: rocketmq-broker-master
           mountPath: /opt/rocketmq/store
 
         readinessProbe:
@@ -121,7 +121,11 @@ spec:
       dnsPolicy: ClusterFirst
       restartPolicy: Always
 
-      volumes:
-      - name: host-volume-rocketmq-broker-master-prod
-        hostPath:
-          path: /mnt/data/rocketmq-master
+  volumeClaimTemplates:
+    - metadata:
+        name: rocketmq-broker-master
+      spec:
+        accessModes: [ "ReadWriteOnce" ]
+        resources:
+          requests:
+            storage: 5Gi
