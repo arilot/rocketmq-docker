@@ -53,7 +53,7 @@ spec:
 
         resources:
           requests:
-            cpu: 1
+            cpu: 0.4
             memory: 1740Mi
           limits:
             cpu: 1
