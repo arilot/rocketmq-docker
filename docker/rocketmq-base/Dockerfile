@@ -37,7 +37,7 @@ RUN mkdir -p \
  /opt/rocketmq/store
 
 # get the version
-RUN curl http://mirrors.hust.edu.cn/apache/rocketmq/${ROCKETMQ_VERSION}/rocketmq-all-${ROCKETMQ_VERSION}-bin-release.zip -o /opt/rocketmq-all-${ROCKETMQ_VERSION}-bin-release.zip \
+RUN curl https://dist.apache.org/repos/dist/release/rocketmq/${ROCKETMQ_VERSION}/rocketmq-all-${ROCKETMQ_VERSION}-bin-release.zip -o /opt/rocketmq-all-${ROCKETMQ_VERSION}-bin-release.zip \
  && unzip -d /opt /opt/rocketmq-all-${ROCKETMQ_VERSION}-bin-release.zip \
  && mv /opt/rocketmq-all-${ROCKETMQ_VERSION}-bin-release ${ROCKETMQ_HOME} \
  && rm -rf /opt/rocketmq-all*
