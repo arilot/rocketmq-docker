@@ -90,7 +90,7 @@ spec:
 
         volumeMounts:
         - name: rocketmq-broker-slave
-          mountPath: /opt/rocketmq/store
+          mountPath: /opt/rocketmq/
 
         readinessProbe:
           tcpSocket:
