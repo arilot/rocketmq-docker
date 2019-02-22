@@ -45,4 +45,5 @@ RUN curl https://dist.apache.org/repos/dist/release/rocketmq/${ROCKETMQ_VERSION}
 # add scripts
 COPY scripts/ ${ROCKETMQ_HOME}/bin/
 
-VOLUME /opt/rocketmq/logs /opt/rocketmq/store
+#VOLUME /opt/rocketmq/logs /opt/rocketmq/store
+RUN ln -nfs /opt/rocketmq/logs /opt/logs
